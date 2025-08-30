@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmodalla <bmodalla@amman.42.fr>            +#+  +:+       +#+        */
+/*   By: braamo <braamo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 17:34:36 by bmodalla          #+#    #+#             */
-/*   Updated: 2025/08/17 17:50:26 by bmodalla         ###   ########.fr       */
+/*   Updated: 2025/08/31 01:46:39 by braamo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,13 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*p;
 
 	if (nmemb == 0 || size == 0)
-		return (malloc(1));
+	{
+		p = malloc(1);
+		if (!p)
+			return (NULL);
+		p[0] = '\0';
+		return (p);
+	}
 	fsz = nmemb * size;
 	p = malloc(fsz);
 	if (!p)
